@@ -7,6 +7,7 @@ export interface Expense {
 
 export interface BudgetInput {
   city: string;
+  // FIX: Renamed 'monthlyPre--TaxIncome' to 'monthlyPreTaxIncome' to be a valid property name.
   monthlyPreTaxIncome: number | '';
   savingsGoalType: 'percentage' | 'amount';
   savingsGoalValue: number | '';
@@ -29,4 +30,12 @@ export interface BudgetAnalysis {
   calculatedAfterTaxIncome: number;
   taxBreakdown: TaxBreakdown;
   cashflowAdvice: string[];
+}
+
+export interface CityComparisonResult {
+  city: string;
+  analysis: BudgetAnalysis | null;
+  isLoading: boolean;
+  error: string | null;
+  monthlyPreTaxIncome: number | '';
 }

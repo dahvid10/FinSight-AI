@@ -88,11 +88,13 @@ interface TabPanelProps {
 
 export const TabPanel: React.FC<TabPanelProps> = ({ value, children, className = '' }) => {
   const { activeTab } = useTabs();
-  if (activeTab !== value) {
-    return null;
-  }
+
   return (
-    <div role="tabpanel" className={`py-6 focus:outline-none ${className}`}>
+    <div
+      role="tabpanel"
+      hidden={activeTab !== value}
+      className={`py-6 focus:outline-none ${className}`}
+    >
       {children}
     </div>
   );

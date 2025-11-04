@@ -8,6 +8,7 @@ import BudgetResult from './components/BudgetResult';
 import Spinner from './components/ui/Spinner';
 import Card from './components/ui/Card';
 import { Tabs, TabList, Tab, TabPanel } from './components/ui/Tabs';
+import CityComparison from './components/CityComparison';
 
 
 const initialExpenses: Expense[] = [
@@ -61,21 +62,24 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center p-4 sm:p-6 lg:p-8">
       <Header />
-      <main className="w-full max-w-4xl mx-auto mb-8">
+      <main className="w-full max-w-6xl mx-auto mb-8">
          <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabList className="mb-4">
             <Tab value="setup">Budget Setup</Tab>
             <Tab value="results" disabled={!resultsAvailable}>Analysis & Results</Tab>
+            <Tab value="comparison" disabled={!resultsAvailable}>City Comparison</Tab>
           </TabList>
           
           <TabPanel value="setup">
-            <BudgetForm 
-              budgetInput={budgetInput} 
-              setBudgetInput={setBudgetInput}
-              onSubmit={handleGenerateBudget}
-              onReset={handleReset}
-              isLoading={isLoading}
-            />
+            <div className="max-w-4xl mx-auto">
+              <BudgetForm 
+                budgetInput={budgetInput} 
+                setBudgetInput={setBudgetInput}
+                onSubmit={handleGenerateBudget}
+                onReset={handleReset}
+                isLoading={isLoading}
+              />
+            </div>
           </TabPanel>
 
           <TabPanel value="results">
@@ -87,22 +91,37 @@ const App: React.FC = () => {
             )}
 
             {error && (
-              <Card>
-                <div className="p-6 text-center text-red-500">
-                  <h3 className="font-bold text-lg mb-2">Oops! Something went wrong.</h3>
-                  <p>{error}</p>
-                </div>
-              </Card>
+               <div className="max-w-4xl mx-auto">
+                <Card>
+                  <div className="p-6 text-center text-red-500">
+                    <h3 className="font-bold text-lg mb-2">Oops! Something went wrong.</h3>
+                    <p>{error}</p>
+                  </div>
+                </Card>
+              </div>
             )}
 
             {analysis && !isLoading && (
-              <BudgetResult 
-                analysis={analysis} 
-                preTaxIncome={Number(budgetInput.monthlyPreTaxIncome) || 0}
-                expenses={budgetInput.expenses}
+               <div className="max-w-4xl mx-auto">
+                <BudgetResult 
+                  analysis={analysis} 
+                  preTaxIncome={Number(budgetInput.monthlyPreTaxIncome) || 0}
+                  expenses={budgetInput.expenses}
+                />
+              </div>
+            )}
+          </TabPanel>
+
+          <TabPanel value="comparison">
+            {analysis && (
+              <CityComparison
+                baseCity={budgetInput.city}
+                baseAnalysis={analysis}
+                budgetInput={budgetInput}
               />
             )}
           </TabPanel>
+
         </Tabs>
       </main>
     </div>
