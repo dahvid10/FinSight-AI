@@ -1,0 +1,5 @@
+{
+  "name": "FinSight AI",
+  "description": "An intelligent personal finance application that uses AI to provide personalized financial insights and budget analysis based on your income, expenses, and savings goals.",
+  "requestFramePermissions": []
+}
