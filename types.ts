@@ -38,4 +38,7 @@ export interface CityComparisonResult {
   isLoading: boolean;
   error: string | null;
   monthlyPreTaxIncome: number | '';
+  expenses: Expense[];
+  savingsGoalType: 'percentage' | 'amount';
+  savingsGoalValue: number | '';
 }

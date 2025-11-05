@@ -37,7 +37,7 @@ interface TabListProps {
 
 export const TabList: React.FC<TabListProps> = ({ children, className = '' }) => {
   return (
-    <div className={`flex border-b border-gray-700 ${className}`}>
+    <div className={`flex border-b border-gray-200 dark:border-gray-700 ${className}`}>
       {children}
     </div>
   );
@@ -65,13 +65,13 @@ export const Tab: React.FC<TabProps> = ({ value, children, disabled = false }) =
       disabled={disabled}
       role="tab"
       aria-selected={isActive}
-      className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 focus-visible:ring-sky-500 ${
+      className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-800 focus-visible:ring-sky-500 ${
         isActive
-          ? 'border-sky-500 text-sky-400'
-          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500'
+          ? 'border-sky-500 text-sky-600 dark:text-sky-400'
+          : 'border-transparent text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600'
       } ${
         disabled
-          ? 'cursor-not-allowed text-gray-600'
+          ? 'cursor-not-allowed text-gray-400'
           : ''
       }`}
     >

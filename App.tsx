@@ -60,7 +60,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col items-center p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 lg:p-8">
       <Header />
       <main className="w-full max-w-6xl mx-auto mb-8">
          <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -86,7 +86,7 @@ const App: React.FC = () => {
             {isLoading && (
               <div className="flex justify-center items-center py-12">
                 <Spinner />
-                <p className="ml-4 text-lg text-gray-400">AI is analyzing your finances...</p>
+                <p className="ml-4 text-lg text-gray-500 dark:text-gray-400">AI is analyzing your finances...</p>
               </div>
             )}
 
