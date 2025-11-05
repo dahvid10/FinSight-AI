@@ -86,7 +86,7 @@ const App: React.FC = () => {
             {isLoading && (
               <div className="flex justify-center items-center py-12">
                 <Spinner />
-                <p className="ml-4 text-lg text-gray-500 dark:text-gray-400">AI is analyzing your finances...</p>
+                <p className="ml-4 text-lg text-gray-400">AI is analyzing your finances...</p>
               </div>
             )}
 

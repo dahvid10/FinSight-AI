@@ -80,25 +80,25 @@ const FinancialChat: React.FC<FinancialChatProps> = ({ analysis }) => {
   };
 
   return (
-    <div className="flex flex-col h-96 bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 ring-1 ring-gray-200 dark:ring-gray-700">
+    <div className="flex flex-col h-96 bg-gray-800 rounded-lg p-4 ring-1 ring-gray-700">
       <div className="flex-1 overflow-y-auto space-y-4 pr-2">
         {messages.map((msg, index) => (
           <div key={index} className={`flex ${msg.author === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-xs md:max-w-md lg:max-w-lg px-4 py-2 rounded-xl ${msg.author === 'user' ? 'bg-sky-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>
+            <div className={`max-w-xs md:max-w-md lg:max-w-lg px-4 py-2 rounded-xl ${msg.author === 'user' ? 'bg-sky-600 text-white' : 'bg-gray-700 text-gray-200'}`}>
               <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
             </div>
           </div>
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="max-w-xs md:max-w-md lg:max-w-lg px-4 py-2 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+            <div className="max-w-xs md:max-w-md lg:max-w-lg px-4 py-2 rounded-xl bg-gray-700 text-gray-200">
                 <Spinner />
             </div>
           </div>
         )}
         <div ref={messagesEndRef} />
       </div>
-      <form onSubmit={handleSendMessage} className="mt-4 flex items-center gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+      <form onSubmit={handleSendMessage} className="mt-4 flex items-center gap-2 border-t border-gray-700 pt-4">
         <Input
           type="text"
           value={userInput}
